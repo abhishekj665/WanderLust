@@ -47,7 +47,7 @@
 
 /* Card */
 
-.card{
+.listing-card{
     border : none !important;
     margin-bottom: 2rem;
 }
@@ -115,3 +115,12 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.show-img {
+  width: 100%;           
+  max-height: 400px;     
+  object-fit: cover;     
+  border-radius: 10px;   
+}
+
+
