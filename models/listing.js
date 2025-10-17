@@ -4,34 +4,38 @@ const Review = require("./review.js");
 const review = require("./review.js");
 
 const listingSchema = new Schema({
-    title : {
-        type : String,
-        require : true
-    },
+  title: {
+    type: String,
+    required: true
+  },
+  description: String,
 
-    description : String,
-    image: {
-  url: {
+  image: {
     type: String,
     default: "https://img.freepik.com/premium-photo/3d-rendering-sea-villa-illustration_62754-2445.jpg",
-    set: (v) => v === "" ? "https://img.freepik.com/premium-photo/3d-rendering-sea-villa-illustration_62754-2445.jpg" : v
-  }
-},
-    price : {
-      type : Number,
-      required : true,
-      default : 0,
-    },
-    location : String,
-    country : String,
+    set: (v) => (!v || v.trim() === "" ? "https://img.freepik.com/premium-photo/3d-rendering-sea-villa-illustration_62754-2445.jpg" : v)
+  },
 
-    reviews : [
-        {
-          type : Schema.Types.ObjectId,
-          ref : "Review",
-        }
-    ]
+  price: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  location: String,
+  country: String,
+
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    }
+  ],
+  owner : {
+    type : Schema.Types.ObjectId,
+    ref:"User",
+  }
 });
+
 
 listingSchema.post("findOneAndDelete", async(listing) => {
   if(listing){

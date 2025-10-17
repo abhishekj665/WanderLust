@@ -124,3 +124,23 @@
 }
 
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
+
+footer {
+  background-color: #ebebeb;
+  padding: 1rem;
+  text-align: center;
+  height: 150px !important;
+}

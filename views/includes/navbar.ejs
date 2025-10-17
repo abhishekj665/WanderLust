@@ -1,14 +1,60 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-    <span class="navbar-toggler-icon"></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/listings">All Listings</a>
         <a class="nav-link" href="/listings/new">Add New Listing</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser) { %>
+        <a class="nav-link" aria-current="page" href="/signup">Sign up</a>
+        <a class="nav-link" href="/login">Log in</a>
+        <% } %> <% if(currUser){ %>
+        <div class="profile-section" style="margin-right: 2rem;">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link fs-5"
+              href="#"
+              id="aboutDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span style="font-size: large; color: #2b6cb0"
+                ><i class="fa-solid fa-user" style="color: #2b6cb0"></i
+                >&nbsp;<%= currUser.username %></span
+              >
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="/signup">SignUp</a></li>
+              <li>
+                <a
+                  href="/logout"
+                  style="
+                    text-decoration: none;
+                    color: rgb(237, 16, 16);
+                    font-size: large;
+                    margin-left: 1rem;
+                  "
+                  id="dropdown-logout"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </li>
+        </div>
+        <% } %>
       </div>
     </div>
   </div>
