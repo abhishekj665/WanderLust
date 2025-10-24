@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const Listing = require("../models/listing");
-
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 const { listingSchema, reviewSchema } = require("../schema");
@@ -12,16 +11,22 @@ const { isOwner } = require("../middleware");
 const { validateListing } = require("../middleware");
 const listingController = require("../controllers/listings");
 
+const multer  = require('multer');
+const {storage} = require("../cloudConfig");
+const upload = multer({storage});
+
 router
   .route("/")
   .get(wrapAsync(listingController.index))
   .post(
     isLoggedIn,
-    validateListing,
+    upload.single('listing[image]'),
+    // validateListing,
     wrapAsync(listingController.createListing)
   );
 
-  //New Route
+
+// New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 router
@@ -30,12 +35,11 @@ router
   .put(
     isLoggedIn,
     isOwner,
+    upload.single('listing[image]'),
     validateListing,
     wrapAsync(listingController.updateListing)
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
-
-
 
 // Edit Route
 router.get(
@@ -44,7 +48,5 @@ router.get(
   isOwner,
   wrapAsync(listingController.editListing)
 );
-
-
 
 module.exports = router;

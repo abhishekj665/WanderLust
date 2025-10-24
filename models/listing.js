@@ -11,9 +11,8 @@ const listingSchema = new Schema({
   description: String,
 
   image: {
-    type: String,
-    default: "https://img.freepik.com/premium-photo/3d-rendering-sea-villa-illustration_62754-2445.jpg",
-    set: (v) => (!v || v.trim() === "" ? "https://img.freepik.com/premium-photo/3d-rendering-sea-villa-illustration_62754-2445.jpg" : v)
+    url : String,
+    filename : String
   },
 
   price: {
