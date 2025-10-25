@@ -31,9 +31,15 @@
       margin-left: 2vh;
       height: 5vh;
       
-      
-      
     }
+
+    @media(max-width:350px){
+      .ms-auto{
+        margin-left: 0!important;
+      }
+    }
+
+
 
     .tax-info {
       display: none;
@@ -89,7 +95,7 @@
       <i class="fa-solid fa-umbrella-beach"></i>
       <p>Beach</p>
     </div>
-    <div class="form-check form-switch form-check-reverse ms-auto">
+    <div class="form-check form-switch form-check-reverse ms-auto ms-sm-0">
       <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
       <label class="form-check-label" for="switchCheckDefault">Show price with tax</label>
     </div>

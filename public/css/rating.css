@@ -47,6 +47,38 @@
   }
 }
 
+
+
+
+.review-card .card {
+    box-sizing: border-box; 
+}
+
+
+@media screen and (max-width: 450px) {
+    
+    .review-card *, 
+    .review-card *::before, 
+    .review-card *::after {
+        box-sizing: content-box;
+    }
+
+    
+    .review-card {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;    
+        gap: 10px;              
+    }
+
+    
+    .review-card .card {
+        width: 90%;  
+        margin-left: 0 !important; 
+    }
+}
+
+
 .starability-slot {
   display: block;
   position: relative;
@@ -104,6 +136,12 @@
 
 .starability-slot > .input-no-rate:focus ~ .starability-focus-ring {
   opacity: 1;
+}
+
+@media(maxx-width:450px){
+  *, ::after, ::before {
+    box-sizing : 0;
+}
 }
 
 .starability-slot > label {
